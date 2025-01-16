@@ -1,0 +1,8 @@
+train: "data/test1/images/train"
+val: "data/test1/images/val"
+
+names:
+  0: "Bluetooth-headset"
+  1: "ruler"
+
+nc: 2

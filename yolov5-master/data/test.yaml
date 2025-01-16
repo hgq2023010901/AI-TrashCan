@@ -1,0 +1,10 @@
+train: "data/test/images/train"
+val: "data/test/images/val"
+
+names:
+  0: "recyclable waste"
+  1: "hazardous waste"
+  2: "kitchen waste"
+  3: "other waste"
+
+nc: 4
