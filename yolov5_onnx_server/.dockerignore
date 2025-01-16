@@ -1,0 +1,9 @@
+.git
+ReqFile/leaf_det.onnx
+ReqFile/sample_pic.JPG
+ReqFile/bus.jpg
+img
+.idea
+__pycache__
+README.md
+detect.py
