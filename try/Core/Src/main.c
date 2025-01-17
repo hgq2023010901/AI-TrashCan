@@ -35,7 +35,6 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define MAX_LEN 16
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -127,32 +126,7 @@ int main(void)
     /* USER CODE BEGIN 3 */
 //    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_1);
 //    HAL_Delay(3000);
-	  while (1) {
-	        while (HAL_UART_Receive(&huart2, &u2_RX_ReceiveBit, 1, 100) != HAL_OK)
-	            ;
-	        u1_printf("receive bit%c\r\n", u2_RX_ReceiveBit);
-	        if (u2_RX_ReceiveBit == '\n') {
-	            if (rx_len > 0 && u2_RX_Buf[rx_len - 1] == '\r') {  //说明接收成功，可以输出，并退出循环
-	                u1_printf("received:");
-	                HAL_UART_Transmit(&huart1, u2_RX_Buf, rx_len - 1, HAL_MAX_DELAY);
-	                u2_printf("received:");
-	                HAL_UART_Transmit(&huart2, u2_RX_Buf, rx_len - 1, HAL_MAX_DELAY);
-	                rx_len = 0;
-	                break;
-	            } else {  //上一位并不是/r，说明没有接收成功，应当重新接收
-	                rx_len = 0;
-	            }
-	        } else {  //接收到了其他的字符，则存入缓冲区
-	            u2_RX_Buf[rx_len++] = u2_RX_ReceiveBit;
-	        }
-	        if (rx_len == MAX_LEN) {
-	            u1_printf("receive buffer is full!");
-	            HAL_UART_Transmit(&huart1, u2_RX_Buf, rx_len, HAL_MAX_DELAY);
-	            u2_printf("receive buffer is full!");
-	            HAL_UART_Transmit(&huart2, u2_RX_Buf, rx_len, HAL_MAX_DELAY);
-	            rx_len = 0;
-	        }
-	    }
+
   }
   /* USER CODE END 3 */
 }

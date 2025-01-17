@@ -232,12 +232,14 @@ void u2_printf(char* fmt, ...) {
   len = strlen((char*)buf);
   HAL_UART_Transmit(&huart2, buf, len, HAL_MAX_DELAY);//若使用了其他UART通道，将对应通道（参数1）修改即可。该函数在（6.补充）中会进行说明。
 }
+
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart){
 
 if(huart==&huart2)
 
 {
-  u1_printf("received:");
+
+  u1_printf("received:\n");
   HAL_UART_Transmit(&huart1, u2_RX_Buf, RX_BUF_LEN, HAL_MAX_DELAY);
   u1_printf("\n");
   HAL_UART_Receive_DMA(&huart2, u2_RX_Buf, RX_BUF_LEN);
