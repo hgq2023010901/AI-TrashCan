@@ -238,12 +238,28 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef* huart){
 if(huart==&huart2)
 
 {
-
-  u1_printf("received:\n");
-  HAL_UART_Transmit(&huart1, u2_RX_Buf, RX_BUF_LEN, HAL_MAX_DELAY);
-  u1_printf("\n");
-  HAL_UART_Receive_DMA(&huart2, u2_RX_Buf, RX_BUF_LEN);
-
+	u1_printf("received:\n");
+	HAL_UART_Transmit(&huart1, u2_RX_Buf, RX_BUF_LEN, HAL_MAX_DELAY);
+	u1_printf("\n");
+	u1_printf("received:\n");
+	HAL_UART_Transmit(&huart1, u2_RX_Buf, 3, HAL_MAX_DELAY);
+	u1_printf("\n");
+	u1_printf("received:\n");
+	HAL_UART_Transmit(&huart1, u2_RX_Buf+3, 3, HAL_MAX_DELAY);
+	u1_printf("\n");
+	u1_printf("received:\n");
+	HAL_UART_Transmit(&huart1, u2_RX_Buf+6, 1, HAL_MAX_DELAY);
+	u1_printf("\n");
+	u1_printf("received:\n");
+	HAL_UART_Transmit(&huart1, u2_RX_Buf+8, 3, HAL_MAX_DELAY);
+	u1_printf("\n");
+	u1_printf("received:\n");
+	HAL_UART_Transmit(&huart1, u2_RX_Buf+11, 3, HAL_MAX_DELAY);
+	u1_printf("\n");
+	u1_printf("received:\n");
+	HAL_UART_Transmit(&huart1, u2_RX_Buf+14, 1, HAL_MAX_DELAY);
+	u1_printf("\n");
+	HAL_UART_Receive_DMA(&huart2, u2_RX_Buf, RX_BUF_LEN);
 }
 }
 /* USER CODE END 1 */
