@@ -35,8 +35,8 @@ def tag_images(imgs, img_detections, img_size, classes):
                 results.append(
                     {
                         "crop": [int(i) for i in (x1, y1, x2, y2)],
-                        "classes": classes[int(cls_pred)]
-
+                        #"classes": classes[int(cls_pred)]
+                        "classes": str(cls_pred)
                     }
                 )
         else:

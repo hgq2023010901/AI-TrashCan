@@ -45,7 +45,7 @@ if __name__ == "__main__":
     label.pack()
 
     # 创建视频捕捉对象
-    cap = cv2.VideoCapture('source/trash0.mp4')  # 替换为你的视频文件路径
+    cap = cv2.VideoCapture(0)  # 替换为你的视频文件路径
 
     # 开始更新帧
     update_frame()
