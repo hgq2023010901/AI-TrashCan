@@ -1,7 +1,7 @@
-from PIL import Image,ImageDraw
-from utils.operation import YOLO
+from utils.operation import YOLO,DrawRect
+import cv2
 
-def detect(onnx_path='ReqFile/best3.onnx',img_path=r'ReqFile/b.jpg',show=False):
+def detect(onnx_path='ReqFile/yolo11s.onnx',img_path=r'ReqFile/bus.jpg',show=True):
     '''
     检测目标，返回目标所在坐标如：
     {'crop': [57, 390, 207, 882], 'classes': 'person'},...]
@@ -11,19 +11,17 @@ def detect(onnx_path='ReqFile/best3.onnx',img_path=r'ReqFile/b.jpg',show=False):
     :return:
     '''
     yolo = YOLO(onnx_path=onnx_path)
-    det_obj = yolo.decect(img_path)
+    img_cv = cv2.imread(img_path)
+    det_obj = yolo.decect(img_cv)
 
     # 结果
     print (det_obj)
 
     # 画框框
     if show:
-        img = Image.open(img_path)
-        draw = ImageDraw.Draw(img)
-
-        for i in range(len(det_obj)):
-            draw.rectangle(det_obj[i]['crop'],width=3)
-        img.show()  # 展示
+        img_show = DrawRect(img_cv,det_obj)
+        cv2.imshow('Image', img_show)
+        cv2.waitKey(0)
 
 if __name__ == "__main__":
     detect()
